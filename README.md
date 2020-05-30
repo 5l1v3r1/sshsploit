@@ -1,7 +1,7 @@
 # SSHSploit
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/54115104/83340671-c3887f80-a2e3-11ea-9ada-f21dc56ab244.png" hight="500" width="500" alt="">
+    <img src="https://user-images.githubusercontent.com/54115104/83340671-c3887f80-a2e3-11ea-9ada-f21dc56ab244.png" hight="250" width="250" alt="">
 </p>
 
 ```
