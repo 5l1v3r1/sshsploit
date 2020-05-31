@@ -1,0 +1,27 @@
+printf '\033]2;SSHSploit Framework\a'
+
+if [[ -d ~/sshsploit ]]
+then
+cd ~/sshsploit
+chmod +x sshsploit
+./sshsploit
+else
+{
+ASESR="$(ping -c 1 -q www.google.com >&/dev/null; echo $?)"
+} &> /dev/null
+if [[ "$ASESR" = 0 ]]
+then 
+cd ~
+{
+git clone https://github.com/entynetproject/sshsploit.git
+cd $OLDPWD
+cd ~/sshsploit
+} &> /dev/null
+chmod +x sshsploit
+./sshsploit
+else
+cd ~
+sleep 1
+exit
+fi
+fi
