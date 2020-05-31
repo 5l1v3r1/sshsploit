@@ -38,6 +38,8 @@ rport = ""
 cmd = ""
 
 attack = ""
+pwd = 0
+location = []
 
 readline.parse_and_bind("tab: complete")
 
@@ -92,10 +94,30 @@ def main():
                             if location == []:
                                 pwd = 0
                                 break
+                        elif mod[0] == "set":
+                            if len(mod) < 3:
+                                print("Usage: set <option> <value>")
+                            else:
+                                if attack == "libssh_rce_noauth":
+                                    if mod[1].lower() == "rhost":
+                                        rhost = mod[2]
+                                    elif mod[1].lower() == "rport":
+                                        rport = mod[2]
+                                    elif mod[1].lower() == "cmd":
+                                        cmd = mod[2]
+                                    else:
+                                        print(E+"Options is not found!")
+                                else:
+                                    if mod[1].lower() == "rhost":
+                                        rhost = mod[2]
+                                    elif mod[1].lower() == "rport":
+                                        rport = mod[2]
+                                    else:
+                                        print(E+"Options is not found!")
                         elif mod[0] == "options":
                             if attack == "libssh_rce_noauth":
                                 pass
-                            elif attack == "libssh_shell_noauth":
+                            else:
                                 pass
                         elif mod[0] == "use":
                             if len(mod) < 2:
