@@ -70,7 +70,5 @@ chmod +x install.sh
 fi
 } &> /dev/null
 echo -e ""$S"Successfully updated!"
-cd .
-touch .updated
 sleep 1
 exit
