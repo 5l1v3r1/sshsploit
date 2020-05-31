@@ -61,7 +61,7 @@ To execute SSHSploit Framework you
 should execute the following command.
 ```
 
-> mouse
+> sshsploit
 
 ***
 
