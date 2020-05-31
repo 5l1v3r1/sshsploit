@@ -17,3 +17,22 @@
 #
 #        You should have received a copy of the GNU General Public License
 #        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+printf '\033]2;uninstall.sh\a'
+
+G="\033[1;34m[*] \033[0m"
+S="\033[1;32m[+] \033[0m"
+E="\033[1;31m[-] \033[0m"
+
+if [[ $EUID -ne 0 ]]
+then
+   echo -e ""$E"This script must be run as root!"
+   exit
+fi
+
+{
+rm /bin/sshsploit
+rm /usr/local/bin/sshsploit
+rm -rf ~/sshsploit
+rm /data/data/com.termux/files/usr/bin/sshsploit
+} &> /dev/null
