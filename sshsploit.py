@@ -20,7 +20,7 @@
 
 import os
 
-os.system("printf '\033]2;Ghost Framework\a'")
+os.system("printf '\033]2;SSHSploit Framework\a'")
 
 import sys
 import subprocess
