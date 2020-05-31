@@ -59,7 +59,7 @@ rm /bin/sshsploit
 rm /usr/local/bin/sshsploit
 rm /data/data/com.termux/files/usr/bin/sshsploit
 cd ~
-git clone https://github.com/entynetproject/sshsploit.git
+git clone https://github.com/enty8080/sshsploit.git
 if [[ "$UPD" != "true" ]]
 then
 sleep 0
