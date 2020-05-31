@@ -1,0 +1,7 @@
+
+    Command        Description
+    -------        -----------
+    clear          Clear terminal window.
+    exit           Exit Ghost Framework.
+    help           Show available commands.
+    update         Update Ghost Framework.
