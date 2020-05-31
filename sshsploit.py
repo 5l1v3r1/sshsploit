@@ -66,3 +66,6 @@ def main():
             print(E+"Unrecognized command!")
         ui = input('\033[4msshsploit\033[0m> ').strip(" ")
         ui = ui.split()
+        
+banner()
+main()
