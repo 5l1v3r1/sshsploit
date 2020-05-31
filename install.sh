@@ -83,7 +83,7 @@ sleep 0
 else
 cd ~
 {
-git clone https://github.com/entynetproject/sshsploit.git
+git clone https://github.com/enty8080/sshsploit.git
 } &> /dev/null
 fi
 
