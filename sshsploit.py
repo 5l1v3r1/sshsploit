@@ -116,9 +116,9 @@ def main():
                                         print(E+"Options is not found!")
                         elif mod[0] == "options":
                             if attack == "libssh_rce_noauth":
-                                pass
+                                os.system("ruby data/options/options.rb libssh_rce_noauth "+rhost+" "+rport+" "+cmd)
                             else:
-                                pass
+                                os.system("ruby data/options/options.rb libssh_shell_noauth "+rhost+" "+rport)
                         elif mod[0] == "use":
                             if len(mod) < 2:
                                 print("Usage: use <module>")
