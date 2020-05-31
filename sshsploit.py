@@ -26,5 +26,25 @@ def banner():
     print("")
 
 def main():
+    ui = input('\033[4msshsploit\033[0m> ').strip(" ")
+    ui = ui.split()
     while True:
-        break
+        if ui == []:
+            pass
+        elif ui[0] == "exit":
+            os.system("chmod +x core/server.sh && core/server.sh stop")
+            sys.exit()
+        elif ui[0] == "clear":
+            os.system("clear")
+        elif ui[0] == "update":
+            os.system("chmod +x etc/update.sh && etc/update.sh")
+        elif ui[0] == "help":
+            print("")
+            print("Core Commands")
+            print("=============")
+            os.system("cat data/cmds/core_cmds.txt")
+            print("")
+        else:
+            print(E+"Unrecognized command!")
+        ui = input('\033[4msshsploit\033[0m> ').strip(" ")
+        ui = ui.split()
