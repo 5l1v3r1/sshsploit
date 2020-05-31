@@ -33,6 +33,10 @@ S = '\033[1;32m[+] \033[0m'
 W = '\033[1;33m[!] \033[0m'
 E = '\033[1;31m[-] \033[0m'
 
+rhost = ""
+rport = ""
+cmd = ""
+
 readline.parse_and_bind("tab: complete")
 
 def banner():
@@ -62,6 +66,27 @@ def main():
             print("=============")
             os.system("cat data/cmds/core_cmds.txt")
             print("")
+        elif ui[1] == "set":
+            if len(ui) < 3:
+                print("Usage: set <option> <value>")
+            else:
+                pass
+        elif ui[0] == "run":
+            if len(ui) < 2:
+                print("Usage: run <attack>")
+            else:
+                if rhost == "" or rport == "":
+                    print(E+"Target is not specified!")
+                else:
+                    if cmd == "":
+                        print(E+"Command for RCE is not specified!")
+                    else:
+                        attack = ui[1]
+                        if attack == "libssh_rce_noauth":
+                            print(G+"Starting libssh_rce_noauth attack...")
+                            os.system("python3 modules/libssh_rce_noauth.py "+rhost+" -p "+rport+" -v '"+cmd+"'")
+                        else:
+                            print(E+"No such attack!")
         else:
             print(E+"Unrecognized command!")
         ui = input('\033[4msshsploit\033[0m> ').strip(" ")
