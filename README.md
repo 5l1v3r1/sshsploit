@@ -23,10 +23,71 @@
  </a>
 </p>
 
+***
+
+# About SSHSploit Framework
+
 ```
 SSHSploit is an advanced penetration testing tool that 
 exploits libSSH to bypass SSH authentication to provide RCE.
 ```
+
+***
+    
+# Getting started
+
+## SSHSploit installation
+
+> cd sshsploit
+
+> chmod +x install.sh
+
+> ./install.sh
+
+## SSHSploit uninstallation
+
+> cd sshsploit
+
+> chmod +x uninstall.sh
+
+> ./uninstall.sh
+
+***
+
+# SSHSploit Framework execution
+
+```
+To execute SSHSploit Framework you
+should execute the following command.
+```
+
+> mouse
+
+***
+
+# Why SSHSploit Framework
+
+* Simple and clear UX/UI.
+
+```
+SSHSploit Framework has a simple and clear UX/UI. 
+It is easy to understand and it will be easier 
+for you to master the SSHSploit Framework.
+```  
+
+* 
+
+```
+```
+
+* A lot of different modules.
+
+```
+There are a lot of different modules in SSHSploit Framework 
+such as libssh_rce_noauth and libssh_shell_noauth.
+```
+
+***
 
 # SSHSploit Framework disclaimer
 
