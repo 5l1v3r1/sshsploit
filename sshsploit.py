@@ -67,6 +67,13 @@ def main():
             print("=============")
             os.system("cat data/cmds/core_cmds.txt")
             print("")
+        elif ui[0] == "modules":
+            print("")
+            print("Modules")
+            print("=======")
+            print("")
+            os.system("cat data/modules/modules.txt")
+            print("")
         elif ui[0] == "use":
             if len(ui) < 2:
                 print("Usage: use <module>")
@@ -76,6 +83,10 @@ def main():
                     mod = input('\033[4msshsploit\033[0m(\033[1;31m'+attack+'\033[0m)> ').strip(" ")
                     mod = mod.split()
                     while True:
+                        if mod == []:
+                            pass
+                        if mod[0] == "options":
+                            
                         if mod[0] == "run":
                             if rhost == "" or rport == "":
                                 print(E+"Target is not specified!")
