@@ -80,14 +80,34 @@ def main():
             else:
                 attack = ui[1]
                 if attack == "libssh_rce_noauth" or attack == "libssh_shell_noauth":
+                    location[pwd] = c[1]
                     mod = input('\033[4msshsploit\033[0m(\033[1;31m'+attack+'\033[0m)> ').strip(" ")
                     mod = mod.split()
                     while True:
                         if mod == []:
                             pass
-                        if mod[0] == "options":
-                            
-                        if mod[0] == "run":
+                        elif mod[0] == "back":
+                            pwd -= 1
+                            location = location[0:-1]
+                            if location == []:
+                                pwd = 0
+                                break
+                        elif mod[0] == "options":
+                            if attack == "libssh_rce_noauth":
+                                pass
+                            elif attack == "libssh_shell_noauth":
+                                pass
+                        elif mod[0] == "use":
+                            if len(mod) < 2:
+                                print("Usage: use <module>")
+                            else:
+                                attack = mod[1]
+                                if attack == "libssh_rce_noauth" or attack == "libssh_shell_noauth":
+                                    pwd += 1
+                                    location[pwd] = mod[1]
+                                else:
+                                    print(E+"Module is not found!")
+                        elif mod[0] == "run":
                             if rhost == "" or rport == "":
                                 print(E+"Target is not specified!")
                             else:
@@ -121,7 +141,7 @@ def main():
                         mod = input('\033[4msshsploit\033[0m(\033[1;31m'+attack+'\033[0m)> ').strip(" ")
                         mod = mod.split()
                 else:
-                    print(E+"No such module!")
+                    print(E+"Module is not found!")
         else:
             print(E+"Unrecognized command!")
         ui = input('\033[4msshsploit\033[0m> ').strip(" ")
